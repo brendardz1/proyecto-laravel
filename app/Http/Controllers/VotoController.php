@@ -94,9 +94,10 @@ class VotoController extends Controller
                     Votocandidato::create($votocandidato);
                 }
                 DB::commit();
+                $success=true;
                 
             } catch (\Exception $e) {
-                $success=false;
+               
                 DB::rollback();
                 if ($e->getCode()==$this->DUPLICATE_KEY_CODE)
                     $message=$this->DUPLICATE_KEY_MESSAGE;
