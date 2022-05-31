@@ -5,9 +5,11 @@
         margin-top: 40px;
     }
 </style>
+
+
 <div class="card uper">
     <div class="card-header">
-        Agregar Candidato
+        AGREGAR CANDIDATO
     </div>
     <div class="card-body">
         @if ($errors->any())
@@ -20,7 +22,7 @@
         </div><br />
         @endif
         <form method="post" action="{{ route('candidato.store') }} " 
-        enctype="multipart/form-data">
+        enctype="multipart/form-data" onsubmit="return validateData();">
             {{ csrf_field() }}
             <div class="form-group">
                 <label for="nombrecompleto">Nombre completo:</label>
@@ -37,16 +39,23 @@
             <div class="form-group">
                 <label for="foto">Foto:</label>
                 <input type="file" id="foto" accept="image/png, image/jpeg" 
-                 class="form-control" name="foto" />
+                 class="form-control" name="foto">
+                 <div id='vista'> </div>
+                
+        
             </div>
             <div class="form-group">
                 <label for="perfil">Perfil:</label>
                 <input type="file" id="perfil" accept="application/pdf"
                  class="form-control" name="perfil" />
+                 <div id='img-perfil'> <embed id= 'vista-pdf' type="application/pdf"> </div>
             </div>
 
             <button type="submit" class="btn btn-primary">Guardar</button>
         </form>
     </div>
 </div>
+</form>
+
+
 @endsection

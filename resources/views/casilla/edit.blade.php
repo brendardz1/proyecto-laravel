@@ -34,4 +34,9 @@
         </form>
     </div>
 </div>
+</form>
+<script type="text/javascript"
+src="{{  URL::asset('js/custom.js') }}">
+
+</script>
 @endsection

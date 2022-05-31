@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Casilla;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class CasillaController extends Controller
 {
@@ -12,6 +12,12 @@ class CasillaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function generatepdf()
+    {
+    $casillas = Casilla::all();
+    $pdf = PDF::loadView('casilla/list', ['casillas'=>$casillas]);
+    return $pdf->download('archivo.pdf');
+    }
     public function index()
     {
         //
@@ -84,6 +90,7 @@ class CasillaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    
     public function update(Request $request, $id)
     {
         $this->validateData($request);
